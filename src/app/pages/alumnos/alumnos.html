@@ -1,0 +1,51 @@
+<h1 style="margin: 12px;">Usuarios</h1>
+<div align="right">
+  <button mat-flat-button color="primary" (click)="onOpenModal()">
+    <mat-icon>add</mat-icon>
+    Agregar
+  </button>
+</div>
+
+<div class="table-content mat-elevation-z8">
+  <table mat-table [dataSource]="alumnos">
+    <!-- columna numero_control -->
+    <ng-container matColumnDef="numero_control">
+      <th mat-header-cell *matHeaderCellDef> No. Control </th>
+      <td mat-cell *matCellDef="let alumno"> {{alumno.numero_control}} </td>
+    </ng-container>
+
+    <!-- columna nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </td>
+    </ng-container>
+
+    <!-- columna correo -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Correo </th>
+      <td mat-cell *matCellDef="let alumno"> {{alumno.email}} </td>
+    </ng-container>
+
+    <!-- columna fecha -->
+    <ng-container matColumnDef="fecha_registro">
+      <th mat-header-cell *matHeaderCellDef> Fecha Registro </th>
+      <td mat-cell *matCellDef="let alumno"> {{alumno.fecha_registro | date: 'dd-MM-yyyy'}} </td>
+    </ng-container>
+
+    <!-- columna actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let alumno">
+        <button mat-flat-button color="accent" (click)="onOpenModal(alumno)">
+          <mat-icon>edit</mat-icon> Editar
+        </button>
+        <button mat-flat-button color="warn" (click)="onDelete(alumno.id_alumno)">
+          <mat-icon>delete</mat-icon> Eliminar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -1,0 +1,27 @@
+<mat-grid-list cols="1" rowHeight="100%" class="fondo">
+  <mat-grid-tile>
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-content>
+        <h1>Inicio de sesión</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input type="text" formControlName="username" matInput />
+            <mat-error *ngIf="baseForm.isValidField(loginForm.get('username'))">
+              {{ baseForm.getErrorMessage(loginForm.get('username')) }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input [type]="'password'" formControlName="password" matInput autocomplete="new-password" />
+            <mat-error *ngIf="baseForm.isValidField(loginForm.get('password'))">
+              {{ baseForm.getErrorMessage(loginForm.get('password')) }}
+            </mat-error>
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Acceder</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

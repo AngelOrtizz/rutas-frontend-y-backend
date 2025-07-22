@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>{{ data?.title }}</h1>
+<br />
+<mat-dialog-content>
+  <form [formGroup]="alumnoForm" (submit)="onSave()">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" formControlName="nombre" matInput />
+      <mat-error>
+        {{ baseForm.getErrorMessage(alumnoForm.get('nombre')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>No. Control</mat-label>
+      <input type="text" formControlName="numero_control" matInput />
+      <mat-error>
+        {{ baseForm.getErrorMessage(alumnoForm.get('numero_control')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" formControlName="email" matInput />
+      <mat-error>
+        {{ baseForm.getErrorMessage(alumnoForm.get('email')) }}
+      </mat-error>
+    </mat-form-field>
+
+    <div align="center">
+      <button mat-flat-button color="primary" [disabled]="alumnoForm.invalid" type="submit">
+        <mat-icon>save</mat-icon>
+        {{ titleButton }}
+      </button>
+      <button mat-flat-button color="warn" (click)="onClear()" type="button">
+        <mat-icon>clear</mat-icon>
+        Limpiar
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+    Cerrar
+  </button>
+</mat-dialog-actions>

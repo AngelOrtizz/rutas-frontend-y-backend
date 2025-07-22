@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span>Seguridad App</span>
+  <span class="spacer"></span>
+  <button mat-button>{{ data?.nombre ? (data.nombre + ' ' + data.apellidos) : 'Invitado' }}</button>
+  <button mat-icon-button (click)="onLogout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
